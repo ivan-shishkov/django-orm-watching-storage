@@ -1,7 +1,8 @@
+from django.conf.urls import url
+
 from datacenter.active_passcards_view import active_passcards_view
 from datacenter.passcard_info_view import passcard_info_view
 from datacenter.storage_information_view import storage_information_view
-from django.conf.urls import url
 
 
 urlpatterns = [
