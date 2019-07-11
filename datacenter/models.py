@@ -39,3 +39,15 @@ class Visit(models.Model):
             entered=self.entered_at,
             leaved= "leaved at " + str(self.leaved_at) if self.leaved_at else "not leaved"
         )
+
+
+def format_duration(duration):
+    days = duration.days
+
+    hours, remainder = divmod(duration.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    if days:
+        return f'{days} d. {hours:02d}:{minutes:02d}:{seconds:02d}'
+    else:
+        return f'{hours:02d}:{minutes:02d}:{seconds:02d}'
