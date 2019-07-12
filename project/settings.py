@@ -1,21 +1,19 @@
 import os
 
+import environ
+
+
+env = environ.Env()
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': '',
-        'PORT': '',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-    }
+    'default': env.db(),
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
-DEBUG = True
+DEBUG = env.bool('DJANGO_DEBUG_MODE', default=False)
 
 ROOT_URLCONF = 'project.urls'
 
@@ -35,6 +33,6 @@ USE_L10N = True
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = env.str('DJANGO_TIME_ZONE', default='Europe/Moscow')
 
 USE_TZ = True
