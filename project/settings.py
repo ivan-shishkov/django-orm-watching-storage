@@ -1,17 +1,18 @@
 import os
 
-import environ
+import environs
 
 
-env = environ.Env()
+env = environs.Env()
+env.read_env()
 
 DATABASES = {
-    'default': env.db(),
+    'default': env.dj_db_url('DATABASE_URL'),
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = env.str('DJANGO_SECRET_KEY')
 
 DEBUG = env.bool('DJANGO_DEBUG_MODE', default=False)
 
