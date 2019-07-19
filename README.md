@@ -22,11 +22,20 @@ $ pip install -r requirements.txt
 
 ## How to launch on localhost
 
+In the project directory, create a text file named **.env** with the following contents:
+
+```
+
+DJANGO_SECRET_KEY=your_secret_key
+DATABASE_URL=postgresql://user:password@host:port/database
+
+```
+
+and then run the following command:
+
 ```bash
 
-$ export DJANGO_SECRET_KEY='your-secret-key'
-$ export DATABASE_URL='postgresql://user:password@host:port/database'
-$ python main.py
+$ python manage.py runserver
 
 ```
 
